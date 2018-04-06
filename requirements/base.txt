@@ -1,0 +1,5 @@
+Django==2.0.4
+django-environ==0.4.4
+django-templated-mail==1.1.1
+djangorestframework==3.8.1
+djoser==1.1.5
