@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import environ
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 ROOT_DIR = environ.Path(__file__)-3
@@ -161,8 +162,16 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = str(APPS_DIR('media'))
 
 REST_FRAMEWORK = {
+	'DEFAULT_AUTHENTICATION_CLASSES':(
+		'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+	)
 }
 
 LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = 'nuser.NftgApiUser'
+
+JWT_AUTH={
+	'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+    'JWT_GET_USER_SECRET_KEY':'nuser.models.jwt_get_secret_key',
+}
