@@ -2,8 +2,8 @@ from calendar import timegm
 from datetime import datetime
 from rest_framework_jwt.settings import api_settings
 from rest_framework_jwt.compat import get_username
-#from rest_framework_jwt.utils import jwt_encode_handler
-
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework_jwt.utils import jwt_decode_handler
 from django_otp.models import Device
 
 
