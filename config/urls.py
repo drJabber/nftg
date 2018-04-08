@@ -18,4 +18,5 @@ from django.urls import include,re_path
 
 urlpatterns = [
     re_path(r'^api/v1/', include('nuser.urls')),
+    re_path(r'^api/v1/', include('otp.urls')),
 ]

@@ -54,11 +54,14 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     'rest_framework',
     'djoser',
-
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    'django_otp.plugins.otp_static',
 )
 
 LOCAL_APPS = (
 	'nuser',
+    'otp',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -175,3 +178,4 @@ JWT_AUTH={
 	'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
     'JWT_GET_USER_SECRET_KEY':'nuser.models.jwt_get_secret_key',
 }
+
