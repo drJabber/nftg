@@ -175,7 +175,8 @@ LOGIN_REDIRECT_URL = "/"
 AUTH_USER_MODEL = 'nuser.NftgApiUser'
 
 JWT_AUTH={
-	'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=15),
     'JWT_GET_USER_SECRET_KEY':'nuser.models.jwt_get_secret_key',
+    'JWT_PAYLOAD_HANDLER' : 'otp.utils.jwt_otp_payload',
 }
 
