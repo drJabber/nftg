@@ -2,6 +2,8 @@ from calendar import timegm
 from datetime import datetime
 from rest_framework_jwt.settings import api_settings
 from rest_framework_jwt.compat import get_username
+#from rest_framework_jwt.utils import jwt_encode_handler
+
 from django_otp.models import Device
 
 
@@ -35,3 +37,14 @@ def jwt_otp_payload(user, device = None):
         payload['otp_device_id'] = None
 
     return payload
+
+def get_custom_jwt(user, device):
+    """
+    Helper to generate a JWT for a validated OTP device.
+    This resets the orig_iat timestamp, as we've re-validated the user.
+    """
+    jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+    payload = jwt_otp_payload(user, device)
+    return jwt_encode_handler(payload)
+
